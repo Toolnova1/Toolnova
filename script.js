@@ -1,694 +1,761 @@
-const modal = document.getElementById("toolModal");
-const modalClose = document.getElementById("modalClose");
-const modalOverlay = document.querySelector(".modal-overlay");
-const toolContent = document.getElementById("toolContent");
+/*
+==================================================
+TOOLNOVA CORE SCRIPT
+==================================================
 
-const toolCards = document.querySelectorAll(".tool-card");
+This file controls:
 
+- Tool registry rendering
+- Categories
+- Tool search
+- Hero search
+- Tool count
+- Advertisement loading
+- Basic navigation behavior
 
-function openModal(content) {
-  toolContent.innerHTML = content;
+Tools themselves remain inside their own folders.
 
-  modal.classList.add("active");
-
-  document.body.style.overflow = "hidden";
-}
-
-
-function closeModal() {
-  modal.classList.remove("active");
-
-  document.body.style.overflow = "";
-}
+==================================================
+*/
 
 
-modalClose.addEventListener("click", closeModal);
+document.addEventListener("DOMContentLoaded", () => {
 
-modalOverlay.addEventListener("click", closeModal);
+  initializeToolbox();
 
+  initializeSearch();
 
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    closeModal();
-  }
-});
-
-
-toolCards.forEach((card) => {
-
-  card.addEventListener("click", () => {
-
-    const tool = card.dataset.tool;
-
-    if (tool === "word-counter") {
-      showWordCounter();
-    }
-
-    if (tool === "case-converter") {
-      showCaseConverter();
-    }
-
-    if (tool === "password-generator") {
-      showPasswordGenerator();
-    }
-
-    if (tool === "calculator") {
-      showCalculator();
-    }
-
-    if (tool === "json-formatter") {
-      showJsonFormatter();
-    }
-
-    if (tool === "unit-converter") {
-      showUnitConverter();
-    }
-
-  });
+  initializeAds();
 
 });
 
 
-/* =========================
-   WORD COUNTER
-========================= */
+/*
+==================================================
+TOOLBOX
+==================================================
+*/
 
-function showWordCounter() {
+function initializeToolbox() {
 
-  openModal(`
-    <div class="tool-interface">
+  const toolsGrid =
+    document.getElementById("toolsGrid");
 
-      <h2>Word Counter</h2>
+  const categoryBar =
+    document.getElementById("categoryBar");
 
-      <p>
-        Enter your text below to count words, characters and lines.
-      </p>
+  const toolsCount =
+    document.getElementById("toolsCount");
 
-      <textarea
-        class="tool-textarea"
-        id="wordInput"
-        placeholder="Type or paste your text here..."
-      ></textarea>
-
-      <div class="tool-result-grid">
-
-        <div class="result-box">
-          <strong id="wordCount">0</strong>
-          <span>Words</span>
-        </div>
-
-        <div class="result-box">
-          <strong id="characterCount">0</strong>
-          <span>Characters</span>
-        </div>
-
-        <div class="result-box">
-          <strong id="lineCount">0</strong>
-          <span>Lines</span>
-        </div>
-
-      </div>
-
-    </div>
-  `);
-
-  const input = document.getElementById("wordInput");
-
-  const wordCount = document.getElementById("wordCount");
-
-  const characterCount =
-    document.getElementById("characterCount");
-
-  const lineCount =
-    document.getElementById("lineCount");
+  const noResults =
+    document.getElementById("noResults");
 
 
-  input.addEventListener("input", () => {
-
-    const text = input.value;
-
-    const trimmed = text.trim();
-
-    const words =
-      trimmed === ""
-        ? []
-        : trimmed.split(/\s+/);
-
-    const lines =
-      text === ""
-        ? 0
-        : text.split(/\n/).length;
+  if (
+    !toolsGrid ||
+    !categoryBar ||
+    typeof TOOLNOVA_TOOLS === "undefined"
+  ) {
+    return;
+  }
 
 
-    wordCount.textContent = words.length;
-
-    characterCount.textContent = text.length;
-
-    lineCount.textContent = lines;
-
-  });
-
-}
+  const activeTools =
+    getActiveTools();
 
 
-/* =========================
-   CASE CONVERTER
-========================= */
+  let currentCategory = "all";
 
-function showCaseConverter() {
-
-  openModal(`
-    <div class="tool-interface">
-
-      <h2>Case Converter</h2>
-
-      <p>
-        Enter text and convert it instantly.
-      </p>
-
-      <textarea
-        class="tool-textarea"
-        id="caseInput"
-        placeholder="Enter your text..."
-      ></textarea>
-
-      <div class="tool-actions">
-
-        <button class="tool-action" id="upperCase">
-          UPPERCASE
-        </button>
-
-        <button class="tool-action" id="lowerCase">
-          lowercase
-        </button>
-
-        <button class="tool-action" id="titleCase">
-          Title Case
-        </button>
-
-        <button class="tool-action" id="clearCase">
-          Clear
-        </button>
-
-      </div>
-
-    </div>
-  `);
+  let currentSearch = "";
 
 
-  const input =
-    document.getElementById("caseInput");
+  /*
+  -----------------------------------------------
+  CREATE CATEGORY BUTTONS
+  -----------------------------------------------
+  */
+
+  const categories =
+    getToolCategories();
 
 
-  document
-    .getElementById("upperCase")
-    .addEventListener("click", () => {
+  categories
+    .filter(category => category !== "all")
+    .forEach(category => {
 
-      input.value =
-        input.value.toUpperCase();
+      const button =
+        document.createElement("button");
 
-    });
+      button.type = "button";
+
+      button.className =
+        "category-button";
+
+      button.dataset.category =
+        category;
+
+      button.textContent =
+        category;
 
 
-  document
-    .getElementById("lowerCase")
-    .addEventListener("click", () => {
+      button.addEventListener(
+        "click",
+        () => {
 
-      input.value =
-        input.value.toLowerCase();
+          document
+            .querySelectorAll(
+              ".category-button"
+            )
+            .forEach(item => {
 
-    });
+              item.classList.remove(
+                "active"
+              );
+
+            });
 
 
-  document
-    .getElementById("titleCase")
-    .addEventListener("click", () => {
-
-      input.value =
-        input.value
-          .toLowerCase()
-          .replace(/\b\w/g, (letter) =>
-            letter.toUpperCase()
+          button.classList.add(
+            "active"
           );
 
+
+          currentCategory =
+            category;
+
+
+          renderTools();
+
+        }
+      );
+
+
+      categoryBar.appendChild(button);
+
     });
 
 
-  document
-    .getElementById("clearCase")
-    .addEventListener("click", () => {
+  /*
+  -----------------------------------------------
+  ALL TOOLS BUTTON
+  -----------------------------------------------
+  */
 
-      input.value = "";
-
-    });
-
-}
-
-
-/* =========================
-   PASSWORD GENERATOR
-========================= */
-
-function showPasswordGenerator() {
-
-  openModal(`
-    <div class="tool-interface">
-
-      <h2>Password Generator</h2>
-
-      <p>
-        Generate a random password for your accounts.
-      </p>
-
-      <input
-        class="tool-textarea"
-        id="passwordOutput"
-        readonly
-        placeholder="Your password will appear here..."
-      >
-
-      <div class="tool-actions">
-
-        <button class="tool-action" id="generatePassword">
-          Generate Password
-        </button>
-
-        <button class="tool-action" id="copyPassword">
-          Copy
-        </button>
-
-      </div>
-
-    </div>
-  `);
+  const allButton =
+    categoryBar.querySelector(
+      '[data-category="all"]'
+    );
 
 
-  const output =
-    document.getElementById("passwordOutput");
+  if (allButton) {
+
+    allButton.addEventListener(
+      "click",
+      () => {
+
+        document
+          .querySelectorAll(
+            ".category-button"
+          )
+          .forEach(item => {
+
+            item.classList.remove(
+              "active"
+            );
+
+          });
 
 
-  function generatePassword() {
-
-    const characters =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
-      "abcdefghijklmnopqrstuvwxyz" +
-      "0123456789" +
-      "!@#$%^&*()_+-=";
-
-
-    let password = "";
-
-
-    for (let i = 0; i < 16; i++) {
-
-      const index =
-        Math.floor(
-          Math.random() * characters.length
+        allButton.classList.add(
+          "active"
         );
 
-      password += characters[index];
 
-    }
+        currentCategory =
+          "all";
 
 
-    output.value = password;
+        renderTools();
+
+      }
+    );
 
   }
 
 
-  document
-    .getElementById("generatePassword")
-    .addEventListener(
-      "click",
-      generatePassword
-    );
+  /*
+  -----------------------------------------------
+  RENDER FUNCTION
+  -----------------------------------------------
+  */
+
+  function renderTools() {
+
+    toolsGrid.innerHTML = "";
 
 
-  document
-    .getElementById("copyPassword")
-    .addEventListener(
-      "click",
-      async () => {
+    const filteredTools =
+      activeTools.filter(tool => {
 
-        if (!output.value) return;
+        const matchesCategory =
+          currentCategory === "all" ||
+          tool.category === currentCategory;
 
-        await navigator.clipboard.writeText(
-          output.value
+
+        const searchText =
+          currentSearch
+            .trim()
+            .toLowerCase();
+
+
+        const matchesSearch =
+          !searchText ||
+          tool.name
+            .toLowerCase()
+            .includes(searchText) ||
+          tool.description
+            .toLowerCase()
+            .includes(searchText) ||
+          tool.category
+            .toLowerCase()
+            .includes(searchText);
+
+
+        return (
+          matchesCategory &&
+          matchesSearch
         );
 
-        document.getElementById(
-          "copyPassword"
-        ).textContent = "Copied!";
+      });
 
-        setTimeout(() => {
 
-          document.getElementById(
-            "copyPassword"
-          ).textContent = "Copy";
+    /*
+    ---------------------------------------------
+    UPDATE COUNT
+    ---------------------------------------------
+    */
 
-        }, 1200);
+    if (toolsCount) {
+
+      if (filteredTools.length === activeTools.length) {
+
+        toolsCount.textContent =
+          `${activeTools.length} tools available`;
+
+      } else {
+
+        toolsCount.textContent =
+          `${filteredTools.length} of ${activeTools.length} tools`;
+
+      }
+
+    }
+
+
+    /*
+    ---------------------------------------------
+    NO RESULTS
+    ---------------------------------------------
+    */
+
+    if (noResults) {
+
+      noResults.hidden =
+        filteredTools.length !== 0;
+
+    }
+
+
+    /*
+    ---------------------------------------------
+    CREATE CARDS
+    ---------------------------------------------
+    */
+
+    filteredTools.forEach(tool => {
+
+      const card =
+        createToolCard(tool);
+
+      toolsGrid.appendChild(card);
+
+    });
+
+  }
+
+
+  /*
+  -----------------------------------------------
+  INITIAL RENDER
+  -----------------------------------------------
+  */
+
+  renderTools();
+
+
+  /*
+  -----------------------------------------------
+  EXPOSE SEARCH HANDLER
+  -----------------------------------------------
+  */
+
+  window.ToolNovaToolSearch = function(searchValue) {
+
+    currentSearch =
+      searchValue || "";
+
+    renderTools();
+
+  };
+
+}
+
+
+/*
+==================================================
+CREATE TOOL CARD
+==================================================
+*/
+
+function createToolCard(tool) {
+
+  const article =
+    document.createElement("article");
+
+  article.className =
+    "tool-card";
+
+
+  article.setAttribute(
+    "data-tool-id",
+    tool.id
+  );
+
+
+  article.innerHTML = `
+
+    <a
+      href="${tool.url}"
+      class="tool-card-link"
+      aria-label="Open ${escapeHTML(tool.name)}"
+    >
+
+      <div class="tool-icon ${escapeHTML(tool.iconClass || "")}">
+        ${escapeHTML(tool.icon || "✦")}
+      </div>
+
+      <div class="tool-content">
+
+        <div class="tool-category">
+          ${escapeHTML(tool.category)}
+        </div>
+
+        <h3>
+          ${escapeHTML(tool.name)}
+        </h3>
+
+        <p>
+          ${escapeHTML(tool.description)}
+        </p>
+
+      </div>
+
+      <div class="tool-arrow">
+        →
+      </div>
+
+    </a>
+
+  `;
+
+
+  return article;
+
+}
+
+
+/*
+==================================================
+SEARCH
+==================================================
+*/
+
+function initializeSearch() {
+
+  const heroSearch =
+    document.getElementById(
+      "heroToolSearch"
+    );
+
+
+  const toolsSearch =
+    document.getElementById(
+      "toolsSearch"
+    );
+
+
+  const clearButton =
+    document.getElementById(
+      "clearToolsSearch"
+    );
+
+
+  /*
+  -----------------------------------------------
+  HERO SEARCH
+  -----------------------------------------------
+  */
+
+  if (heroSearch) {
+
+    heroSearch.addEventListener(
+      "input",
+      () => {
+
+        const value =
+          heroSearch.value.trim();
+
+
+        if (value) {
+
+          const toolsSection =
+            document.getElementById(
+              "tools"
+            );
+
+
+          if (toolsSection) {
+
+            toolsSection.scrollIntoView({
+              behavior: "smooth",
+              block: "start"
+            });
+
+          }
+
+        }
+
+
+        if (toolsSearch) {
+
+          toolsSearch.value =
+            value;
+
+        }
+
+
+        if (
+          typeof window.ToolNovaToolSearch ===
+          "function"
+        ) {
+
+          window.ToolNovaToolSearch(
+            value
+          );
+
+        }
 
       }
     );
 
 
-  generatePassword();
+    heroSearch.addEventListener(
+      "keydown",
+      event => {
 
-}
+        if (
+          event.key === "Enter"
+        ) {
 
-
-/* =========================
-   CALCULATOR
-========================= */
-
-function showCalculator() {
-
-  openModal(`
-    <div class="tool-interface">
-
-      <h2>Calculator</h2>
-
-      <p>
-        Enter a mathematical expression.
-      </p>
-
-      <input
-        class="tool-textarea"
-        id="calculatorInput"
-        placeholder="Example: 25 * 4 + 10"
-      >
-
-      <div class="tool-actions">
-
-        <button class="tool-action" id="calculate">
-          Calculate
-        </button>
-
-        <button class="tool-action" id="clearCalculator">
-          Clear
-        </button>
-
-      </div>
-
-      <div
-        class="result-box"
-        style="margin-top: 20px;"
-      >
-
-        <strong id="calculatorResult">
-          —
-        </strong>
-
-        <span>
-          Result
-        </span>
-
-      </div>
-
-    </div>
-  `);
+          const toolsSection =
+            document.getElementById(
+              "tools"
+            );
 
 
-  const input =
-    document.getElementById("calculatorInput");
+          if (toolsSection) {
 
-  const result =
-    document.getElementById("calculatorResult");
+            toolsSection.scrollIntoView({
+              behavior: "smooth",
+              block: "start"
+            });
 
-
-  document
-    .getElementById("calculate")
-    .addEventListener("click", () => {
-
-      try {
-
-        const expression =
-          input.value.trim();
-
-
-        if (!expression) {
-
-          result.textContent = "Enter a calculation";
-
-          return;
+          }
 
         }
-
-
-        if (!/^[0-9+\-*/().%\s]+$/.test(expression)) {
-
-          result.textContent =
-            "Invalid expression";
-
-          return;
-
-        }
-
-
-        const answer =
-          Function(
-            `"use strict"; return (${expression})`
-          )();
-
-
-        if (!Number.isFinite(answer)) {
-
-          result.textContent =
-            "Invalid result";
-
-          return;
-
-        }
-
-
-        result.textContent = answer;
-
-      } catch {
-
-        result.textContent =
-          "Invalid calculation";
 
       }
+    );
 
-    });
-
-
-  document
-    .getElementById("clearCalculator")
-    .addEventListener("click", () => {
-
-      input.value = "";
-
-      result.textContent = "—";
-
-    });
-
-}
+  }
 
 
-/* =========================
-   JSON FORMATTER
-========================= */
+  /*
+  -----------------------------------------------
+  TOOLS SEARCH
+  -----------------------------------------------
+  */
 
-function showJsonFormatter() {
+  if (toolsSearch) {
 
-  openModal(`
-    <div class="tool-interface">
+    toolsSearch.addEventListener(
+      "input",
+      () => {
 
-      <h2>JSON Formatter</h2>
-
-      <p>
-        Paste JSON below and format it instantly.
-      </p>
-
-      <textarea
-        class="tool-textarea"
-        id="jsonInput"
-        placeholder='{"name":"ToolNova","type":"website"}'
-      ></textarea>
-
-      <div class="tool-actions">
-
-        <button class="tool-action" id="formatJson">
-          Format JSON
-        </button>
-
-        <button class="tool-action" id="minifyJson">
-          Minify
-        </button>
-
-        <button class="tool-action" id="clearJson">
-          Clear
-        </button>
-
-      </div>
-
-    </div>
-  `);
+        const value =
+          toolsSearch.value;
 
 
-  const input =
-    document.getElementById("jsonInput");
+        if (
+          typeof window.ToolNovaToolSearch ===
+          "function"
+        ) {
 
-
-  document
-    .getElementById("formatJson")
-    .addEventListener("click", () => {
-
-      try {
-
-        const parsed =
-          JSON.parse(input.value);
-
-        input.value =
-          JSON.stringify(
-            parsed,
-            null,
-            2
+          window.ToolNovaToolSearch(
+            value
           );
 
-      } catch {
-
-        alert("Invalid JSON.");
-
-      }
-
-    });
+        }
 
 
-  document
-    .getElementById("minifyJson")
-    .addEventListener("click", () => {
+        if (heroSearch) {
 
-      try {
+          heroSearch.value =
+            value;
 
-        const parsed =
-          JSON.parse(input.value);
-
-        input.value =
-          JSON.stringify(parsed);
-
-      } catch {
-
-        alert("Invalid JSON.");
+        }
 
       }
+    );
 
-    });
+  }
 
 
-  document
-    .getElementById("clearJson")
-    .addEventListener("click", () => {
+  /*
+  -----------------------------------------------
+  CLEAR SEARCH
+  -----------------------------------------------
+  */
 
-      input.value = "";
+  if (clearButton) {
 
-    });
+    clearButton.addEventListener(
+      "click",
+      () => {
+
+        if (toolsSearch) {
+
+          toolsSearch.value =
+            "";
+
+        }
+
+
+        if (heroSearch) {
+
+          heroSearch.value =
+            "";
+
+        }
+
+
+        if (
+          typeof window.ToolNovaToolSearch ===
+          "function"
+        ) {
+
+          window.ToolNovaToolSearch(
+            ""
+          );
+
+        }
+
+
+        if (toolsSearch) {
+
+          toolsSearch.focus();
+
+        }
+
+      }
+    );
+
+  }
 
 }
 
 
-/* =========================
-   UNIT CONVERTER
-========================= */
+/*
+==================================================
+ADVERTISEMENT SYSTEM
+==================================================
+*/
 
-function showUnitConverter() {
+function initializeAds() {
 
-  openModal(`
-    <div class="tool-interface">
-
-      <h2>Unit Converter</h2>
-
-      <p>
-        Convert kilometers to miles or miles to kilometers.
-      </p>
-
-      <input
-        class="tool-textarea"
-        id="unitInput"
-        type="number"
-        placeholder="Enter value"
-      >
-
-      <div class="tool-actions">
-
-        <button class="tool-action" id="kmToMiles">
-          KM → Miles
-        </button>
-
-        <button class="tool-action" id="milesToKm">
-          Miles → KM
-        </button>
-
-      </div>
-
-      <div
-        class="result-box"
-        style="margin-top: 20px;"
-      >
-
-        <strong id="unitResult">
-          —
-        </strong>
-
-        <span>
-          Result
-        </span>
-
-      </div>
-
-    </div>
-  `);
+  if (
+    typeof TOOLNOVA_ADS ===
+    "undefined"
+  ) {
+    return;
+  }
 
 
-  const input =
-    document.getElementById("unitInput");
-
-  const result =
-    document.getElementById("unitResult");
-
-
-  document
-    .getElementById("kmToMiles")
-    .addEventListener("click", () => {
-
-      const value =
-        Number(input.value);
-
-      if (!Number.isFinite(value)) {
-
-        result.textContent =
-          "Enter a valid number";
-
-        return;
-
-      }
-
-      result.textContent =
-        `${(value * 0.621371).toFixed(4)} miles`;
-
-    });
+  if (
+    TOOLNOVA_ADS.enabled !== true
+  ) {
+    return;
+  }
 
 
-  document
-    .getElementById("milesToKm")
-    .addEventListener("click", () => {
+  loadConfiguredAd(
+    "nativeTop",
+    "native-top"
+  );
 
-      const value =
-        Number(input.value);
 
-      if (!Number.isFinite(value)) {
+  loadConfiguredAd(
+    "banner300x250",
+    "banner-300x250"
+  );
 
-        result.textContent =
-          "Enter a valid number";
 
-        return;
+  loadConfiguredAd(
+    "banner468x60",
+    "banner-468x60"
+  );
 
-      }
 
-      result.textContent =
-        `${(value * 1.609344).toFixed(4)} km`;
+  /*
+  Mobile banner can be enabled later
+  without changing the core system.
+  */
 
-    });
+}
+
+
+/*
+==================================================
+LOAD AD
+==================================================
+*/
+
+function loadConfiguredAd(
+  configName,
+  slotName
+) {
+
+  const config =
+    getAdConfig(configName);
+
+
+  if (
+    !config ||
+    config.enabled !== true
+  ) {
+    return;
+  }
+
+
+  const slot =
+    document.querySelector(
+      `[data-ad-slot="${slotName}"]`
+    );
+
+
+  if (!slot) {
+    return;
+  }
+
+
+  /*
+  -----------------------------------------------
+  SECURITY / SCRIPT PARSING
+  -----------------------------------------------
+
+  Ad networks provide script tags as HTML.
+
+  We insert normal HTML first, then recreate
+  script elements so browsers execute them.
+  -----------------------------------------------
+  */
+
+  slot.innerHTML =
+    config.html;
+
+
+  const scripts =
+    slot.querySelectorAll(
+      "script"
+    );
+
+
+  scripts.forEach(
+    oldScript => {
+
+      const newScript =
+        document.createElement(
+          "script"
+        );
+
+
+      Array.from(
+        oldScript.attributes
+      ).forEach(
+        attribute => {
+
+          newScript.setAttribute(
+            attribute.name,
+            attribute.value
+          );
+
+        }
+      );
+
+
+      newScript.text =
+        oldScript.text;
+
+
+      oldScript.parentNode.replaceChild(
+        newScript,
+        oldScript
+      );
+
+    }
+  );
+
+}
+
+
+/*
+==================================================
+HTML ESCAPE
+==================================================
+*/
+
+function escapeHTML(value) {
+
+  return String(value)
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+    .replace(
+      /</g,
+      "&lt;"
+    )
+    .replace(
+      />/g,
+      "&gt;"
+    )
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+    .replace(
+      /'/g,
+      "&#039;"
+    );
 
 }
