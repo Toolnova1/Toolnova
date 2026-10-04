@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://yourdomain.com/</loc>
+  </url>
+
+  <url>
+    <loc>https://yourdomain.com/about.html</loc>
+  </url>
+
+  <url>
+    <loc>https://yourdomain.com/privacy.html</loc>
+  </url>
+
+  <url>
+    <loc>https://yourdomain.com/terms.html</loc>
+  </url>
+
+  <url>
+    <loc>https://yourdomain.com/contact.html</loc>
+  </url>
+
+  <url>
+    <loc>https://yourdomain.com/tools/word-counter/index.html</loc>
+  </url>
+
+  <url>
+    <loc>https://yourdomain.com/tools/character-counter/index.html</loc>
+  </url>
+
+  <url>
+    <loc>https://yourdomain.com/tools/case-converter/index.html</loc>
+  </url>
+
+  <url>
+    <loc>https://yourdomain.com/tools/password-generator/index.html</loc>
+  </url>
+
+  <url>
+    <loc>https://yourdomain.com/tools/json-formatter/index.html</loc>
+  </url>
+
+  <url>
+    <loc>https://yourdomain.com/tools/qr-generator/index.html</loc>
+  </url>
+
+  <url>
+    <loc>https://yourdomain.com/tools/calculator/index.html</loc>
+  </url>
+
+  <url>
+    <loc>https://yourdomain.com/tools/unit-converter/index.html</loc>
+  </url>
+
+  <url>
+    <loc>https://yourdomain.com/tools/image-compressor/index.html</loc>
+  </url>
+
+  <url>
+    <loc>https://yourdomain.com/tools/pdf-merger/index.html</loc>
+  </url>
+
+  <url>
+    <loc>https://yourdomain.com/tools/pdf-extractor/index.html</loc>
+  </url>
+
+  <url>
+    <loc>https://yourdomain.com/tools/pdf-text-extractor/index.html</loc>
+  </url>
+
+</urlset>
