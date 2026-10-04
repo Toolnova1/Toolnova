@@ -6,196 +6,231 @@
 
   <meta
     name="description"
-    content="ToolNova — powerful, simple and free online tools in one place."
+    content="ToolNova — free, fast and simple online tools."
   >
 
-  <meta name="theme-color" content="#0b1020">
+  <meta name="theme-color" content="#080b14">
 
-  <title>ToolNova — All Your Tools in One Place</title>
+  <title>ToolNova — Free Online Tools</title>
 
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- Navigation -->
+  <!-- NAVBAR -->
   <header class="navbar">
     <a href="#" class="logo">
       Tool<span>Nova</span>
     </a>
 
-    <nav>
-      <ul class="nav-links">
-        <li>
-          <a href="#">Home</a>
-        </li>
-
-        <li>
-          <a href="#tools">Tools</a>
-        </li>
-
-        <li>
-          <a href="#about">About</a>
-        </li>
-      </ul>
+    <nav class="nav">
+      <a href="#home">Home</a>
+      <a href="#tools">Tools</a>
+      <a href="#about">About</a>
     </nav>
+
+    <a href="#tools" class="nav-button">
+      Explore Tools
+    </a>
   </header>
 
 
-  <!-- Main Content -->
+  <!-- HERO -->
   <main>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="home">
 
-      <div class="badge">
-        ⚡ Simple. Fast. Powerful.
+      <div class="hero-badge">
+        ✦ Free Online Tools
       </div>
 
       <h1>
-        All Your Tools
-        <br>
-        <span>In One Place.</span>
+        Powerful Tools.
+        <span>Simple to Use.</span>
       </h1>
 
       <p>
-        ToolNova brings useful online tools together
-        in one simple, fast and beautiful platform.
+        ToolNova gives you fast, useful and free online tools
+        for everyday tasks, work and productivity.
       </p>
 
-      <a href="#tools" class="hero-button">
-        Explore Tools
-      </a>
+      <div class="hero-actions">
+        <a href="#tools" class="primary-button">
+          Explore Tools
+        </a>
+
+        <a href="#about" class="secondary-button">
+          Learn More
+        </a>
+      </div>
 
     </section>
 
 
-    <!-- Tools Section -->
-    <section class="tools" id="tools">
+    <!-- TOOLS -->
+    <section class="tools-section" id="tools">
 
-      <div class="section-title">
-        <h2>Popular Tools</h2>
+      <div class="section-heading">
+        <div>
+          <p class="section-label">TOOLBOX</p>
 
-        <p>
-          Everything you need, without unnecessary complexity.
+          <h2>
+            Everything you need.
+          </h2>
+        </div>
+
+        <p class="section-description">
+          Useful tools designed to be fast, simple and distraction-free.
         </p>
       </div>
 
 
       <div class="tools-grid">
 
-        <!-- Text Tools -->
-        <article class="tool-card">
+        <!-- WORD COUNTER -->
+        <button class="tool-card" data-tool="word-counter">
 
-          <div class="tool-icon">
-            📝
+          <div class="tool-icon purple">
+            Aa
           </div>
 
-          <h3>
-            Text Tools
-          </h3>
+          <div class="tool-content">
+            <h3>Word Counter</h3>
 
-          <p>
-            Count words, characters and lines with
-            simple and useful text utilities.
-          </p>
-
-        </article>
-
-
-        <!-- Calculator -->
-        <article class="tool-card">
-
-          <div class="tool-icon">
-            🔢
+            <p>
+              Count words, characters and lines instantly.
+            </p>
           </div>
 
-          <h3>
-            Calculators
-          </h3>
+          <span class="tool-arrow">→</span>
 
-          <p>
-            Fast and useful calculators for everyday
-            calculations and common tasks.
-          </p>
-
-        </article>
+        </button>
 
 
-        <!-- Image Tools -->
-        <article class="tool-card">
+        <!-- CASE CONVERTER -->
+        <button class="tool-card" data-tool="case-converter">
 
-          <div class="tool-icon">
-            🖼️
+          <div class="tool-icon blue">
+            Aa
           </div>
 
-          <h3>
-            Image Tools
-          </h3>
+          <div class="tool-content">
+            <h3>Case Converter</h3>
 
-          <p>
-            Resize, compress and convert images
-            quickly and easily.
-          </p>
+            <p>
+              Convert text to uppercase, lowercase and more.
+            </p>
+          </div>
 
-        </article>
+          <span class="tool-arrow">→</span>
+
+        </button>
 
 
-        <!-- Security Tools -->
-        <article class="tool-card">
+        <!-- PASSWORD -->
+        <button class="tool-card" data-tool="password-generator">
 
-          <div class="tool-icon">
+          <div class="tool-icon green">
             🔐
           </div>
 
-          <h3>
-            Security Tools
-          </h3>
+          <div class="tool-content">
+            <h3>Password Generator</h3>
 
-          <p>
-            Generate secure passwords and use
-            practical security utilities.
-          </p>
-
-        </article>
-
-
-        <!-- PDF Tools -->
-        <article class="tool-card">
-
-          <div class="tool-icon">
-            📄
+            <p>
+              Generate strong and secure passwords.
+            </p>
           </div>
 
-          <h3>
-            PDF Tools
-          </h3>
+          <span class="tool-arrow">→</span>
 
-          <p>
-            Work with PDF files using simple
-            browser-based utilities.
-          </p>
-
-        </article>
+        </button>
 
 
-        <!-- Developer Tools -->
-        <article class="tool-card">
+        <!-- CALCULATOR -->
+        <button class="tool-card" data-tool="calculator">
 
-          <div class="tool-icon">
-            ⚙️
+          <div class="tool-icon orange">
+            123
           </div>
 
-          <h3>
-            Developer Tools
-          </h3>
+          <div class="tool-content">
+            <h3>Calculator</h3>
 
-          <p>
-            Handy tools for developers, creators
-            and technical users.
-          </p>
+            <p>
+              Perform quick calculations directly in your browser.
+            </p>
+          </div>
 
-        </article>
+          <span class="tool-arrow">→</span>
+
+        </button>
+
+
+        <!-- JSON FORMATTER -->
+        <button class="tool-card" data-tool="json-formatter">
+
+          <div class="tool-icon pink">
+            { }
+          </div>
+
+          <div class="tool-content">
+            <h3>JSON Formatter</h3>
+
+            <p>
+              Format and validate JSON data easily.
+            </p>
+          </div>
+
+          <span class="tool-arrow">→</span>
+
+        </button>
+
+
+        <!-- UNIT CONVERTER -->
+        <button class="tool-card" data-tool="unit-converter">
+
+          <div class="tool-icon cyan">
+            ↔
+          </div>
+
+          <div class="tool-content">
+            <h3>Unit Converter</h3>
+
+            <p>
+              Convert common units quickly and accurately.
+            </p>
+          </div>
+
+          <span class="tool-arrow">→</span>
+
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section class="about-section" id="about">
+
+      <div class="about-card">
+
+        <p class="section-label">
+          ABOUT TOOLNOVA
+        </p>
+
+        <h2>
+          One place for the tools
+          you actually need.
+        </h2>
+
+        <p>
+          ToolNova is being built as a simple collection of
+          useful browser-based utilities. No unnecessary
+          complexity. No confusing interfaces.
+        </p>
 
       </div>
 
@@ -204,8 +239,12 @@
   </main>
 
 
-  <!-- Footer -->
-  <footer id="about">
+  <!-- FOOTER -->
+  <footer>
+
+    <div class="footer-logo">
+      Tool<span>Nova</span>
+    </div>
 
     <p>
       © 2026 ToolNova. All rights reserved.
@@ -213,6 +252,26 @@
 
   </footer>
 
+
+  <!-- TOOL MODAL -->
+  <div class="modal" id="toolModal">
+
+    <div class="modal-overlay"></div>
+
+    <div class="modal-box">
+
+      <button class="modal-close" id="modalClose">
+        ×
+      </button>
+
+      <div id="toolContent"></div>
+
+    </div>
+
+  </div>
+
+
+  <script src="script.js"></script>
 
 </body>
 </html>
