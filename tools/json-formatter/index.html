@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Free online JSON Formatter — format, validate and minify JSON directly in your browser."
+  >
+
+  <title>JSON Formatter — ToolNova</title>
+
+  <link
+    rel="stylesheet"
+    href="../../style.css"
+  >
+</head>
+
+<body>
+
+  <header class="site-header">
+
+    <div class="container header-inner">
+
+      <a
+        href="../../index.html"
+        class="logo"
+        aria-label="ToolNova Home"
+      >
+        Tool<span>Nova</span>
+      </a>
+
+
+      <nav
+        class="main-nav"
+        aria-label="Main navigation"
+      >
+
+        <a href="../../index.html">
+          Home
+        </a>
+
+        <a href="../../index.html#tools">
+          Tools
+        </a>
+
+        <a href="../../index.html#why-toolnova">
+          Why ToolNova
+        </a>
+
+        <a href="../../about.html">
+          About
+        </a>
+
+      </nav>
+
+
+      <a
+        href="../../index.html#tools"
+        class="header-button"
+      >
+        All Tools
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <main class="tool-page">
+
+    <section class="tool-hero">
+
+      <div class="container">
+
+        <a
+          href="../../index.html#tools"
+          class="back-link"
+        >
+          ← Back to Tools
+        </a>
+
+
+        <div class="tool-page-icon pink">
+          { }
+        </div>
+
+
+        <p class="section-label">
+          DEVELOPER TOOL
+        </p>
+
+
+        <h1>
+          JSON Formatter
+        </h1>
+
+
+        <p class="tool-page-description">
+          Format, validate and minify JSON data quickly
+          and easily in your browser.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <section class="tool-workspace-section">
+
+      <div class="container">
+
+        <div class="tool-workspace">
+
+          <div class="tool-workspace-header">
+
+            <div>
+
+              <h2>
+                JSON Input
+              </h2>
+
+              <p>
+                Paste your JSON below and choose an action.
+              </p>
+
+            </div>
+
+
+            <button
+              type="button"
+              id="clearJson"
+              class="button button-secondary"
+            >
+              Clear
+            </button>
+
+          </div>
+
+
+          <textarea
+            id="jsonInput"
+            class="tool-textarea code-textarea"
+            placeholder='Paste JSON here, for example:
+
+{"name":"ToolNova","tools":12}'
+            spellcheck="false"
+          ></textarea>
+
+
+          <div class="tool-actions">
+
+            <button
+              type="button"
+              id="formatJson"
+              class="button button-primary"
+            >
+              Format JSON
+            </button>
+
+
+            <button
+              type="button"
+              id="minifyJson"
+              class="button button-secondary"
+            >
+              Minify JSON
+            </button>
+
+
+            <button
+              type="button"
+              id="validateJson"
+              class="button button-secondary"
+            >
+              Validate JSON
+            </button>
+
+
+            <button
+              type="button"
+              id="copyJson"
+              class="button button-secondary"
+            >
+              Copy
+            </button>
+
+          </div>
+
+
+          <div
+            id="jsonMessage"
+            class="tool-message"
+            aria-live="polite"
+          >
+          </div>
+
+
+          <div class="json-output-wrapper">
+
+            <div class="tool-workspace-header">
+
+              <div>
+
+                <h2>
+                  Output
+                </h2>
+
+                <p>
+                  Your formatted or minified JSON appears here.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <textarea
+              id="jsonOutput"
+              class="tool-textarea code-textarea"
+              placeholder="JSON output will appear here..."
+              spellcheck="false"
+            ></textarea>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="ad-section">
+
+      <div class="container">
+
+        <div
+          class="ad-slot ad-300x250"
+          data-ad-slot="banner-300x250"
+        >
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="tool-info-section">
+
+      <div class="container">
+
+        <div class="tool-info-card">
+
+          <p class="section-label">
+            JSON FORMATTER
+          </p>
+
+          <h2>
+            Clean and validate JSON instantly
+          </h2>
+
+          <p>
+            Format JSON into a readable structure,
+            minify it for compact output, or validate
+            whether the JSON syntax is correct.
+          </p>
+
+          <p>
+            JSON processing happens directly in your
+            browser. Your JSON does not need to be
+            uploaded to a server.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <footer class="site-footer">
+
+    <div class="container footer-main">
+
+      <div class="footer-brand">
+
+        <a
+          href="../../index.html"
+          class="footer-logo"
+        >
+          Tool<span>Nova</span>
+        </a>
+
+        <p>
+          Free, fast and useful online tools for everyone.
+        </p>
+
+      </div>
+
+
+      <div class="footer-links">
+
+        <div class="footer-column">
+
+          <h3>
+            Tools
+          </h3>
+
+          <a href="../../index.html#tools">
+            All Tools
+          </a>
+
+          <a href="../../index.html#tools">
+            Text Tools
+          </a>
+
+          <a href="../../index.html#tools">
+            Developer Tools
+          </a>
+
+          <a href="../../index.html#tools">
+            PDF Tools
+          </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h3>
+            Company
+          </h3>
+
+          <a href="../../about.html">
+            About
+          </a>
+
+          <a href="../../contact.html">
+            Contact
+          </a>
+
+          <a href="../../privacy.html">
+            Privacy Policy
+          </a>
+
+          <a href="../../terms.html">
+            Terms
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="container footer-bottom">
+
+      <p>
+        © 2026 ToolNova. All rights reserved.
+      </p>
+
+      <p>
+        Built for simple, everyday utility.
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <script src="../../ads/ad-config.js"></script>
+
+  <script src="tool.js"></script>
+
+</body>
+</html>
