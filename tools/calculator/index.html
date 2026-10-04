@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Calculator - ToolNova</title>
+
+  <meta
+    name="description"
+    content="Use ToolNova's fast and simple online calculator for everyday calculations."
+  >
+
+  <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+
+  <!-- =========================================
+       HEADER
+  ========================================== -->
+
+  <header class="site-header">
+
+    <div class="container header-inner">
+
+      <a href="../../index.html" class="logo">
+        <span class="logo-mark">T</span>
+        <span>ToolNova</span>
+      </a>
+
+      <nav class="main-nav">
+
+        <a href="../../index.html">
+          Tools
+        </a>
+
+        <a href="../../about.html">
+          About
+        </a>
+
+        <a href="../../privacy.html">
+          Privacy
+        </a>
+
+        <a href="../../contact.html">
+          Contact
+        </a>
+
+      </nav>
+
+      <a
+        href="../../index.html"
+        class="header-button"
+      >
+        Explore Tools
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================================
+       MAIN
+  ========================================== -->
+
+  <main class="tool-page">
+
+    <!-- TOOL HERO -->
+
+    <section class="tool-hero">
+
+      <div class="container">
+
+        <a
+          href="../../index.html"
+          class="back-link"
+        >
+          ← Back to all tools
+        </a>
+
+        <div class="tool-page-icon orange">
+          123
+        </div>
+
+        <div class="tool-category">
+          Utility
+        </div>
+
+        <h1>
+          Calculator
+        </h1>
+
+        <p>
+          Perform quick and accurate calculations
+          directly in your browser.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- CALCULATOR -->
+
+    <section class="tool-workspace-section">
+
+      <div class="container">
+
+        <div class="tool-workspace">
+
+          <div class="tool-workspace-header">
+
+            <div>
+
+              <h2>
+                Online Calculator
+              </h2>
+
+              <p>
+                Enter numbers and operators using
+                the buttons below.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <!-- DISPLAY -->
+
+          <div class="calculator">
+
+            <input
+              type="text"
+              id="calculatorDisplay"
+              class="calculator-display"
+              value="0"
+              readonly
+              aria-label="Calculator display"
+            >
+
+
+            <!-- BUTTONS -->
+
+            <div class="calculator-grid">
+
+              <button
+                type="button"
+                class="calculator-button calculator-clear"
+                data-action="clear"
+              >
+                AC
+              </button>
+
+              <button
+                type="button"
+                class="calculator-button calculator-operation"
+                data-action="delete"
+              >
+                DEL
+              </button>
+
+              <button
+                type="button"
+                class="calculator-button calculator-operation"
+                data-value="%"
+              >
+                %
+              </button>
+
+              <button
+                type="button"
+                class="calculator-button calculator-operation"
+                data-value="/"
+              >
+                ÷
+              </button>
+
+
+              <button
+                type="button"
+                class="calculator-button"
+                data-value="7"
+              >
+                7
+              </button>
+
+              <button
+                type="button"
+                class="calculator-button"
+                data-value="8"
+              >
+                8
+              </button>
+
+              <button
+                type="button"
+                class="calculator-button"
+                data-value="9"
+              >
+                9
+              </button>
+
+              <button
+                type="button"
+                class="calculator-button calculator-operation"
+                data-value="*"
+              >
+                ×
+              </button>
+
+
+              <button
+                type="button"
+                class="calculator-button"
+                data-value="4"
+              >
+                4
+              </button>
+
+              <button
+                type="button"
+                class="calculator-button"
+                data-value="5"
+              >
+                5
+              </button>
+
+              <button
+                type="button"
+                class="calculator-button"
+                data-value="6"
+              >
+                6
+              </button>
+
+              <button
+                type="button"
+                class="calculator-button calculator-operation"
+                data-value="-"
+              >
+                −
+              </button>
+
+
+              <button
+                type="button"
+                class="calculator-button"
+                data-value="1"
+              >
+                1
+              </button>
+
+              <button
+                type="button"
+                class="calculator-button"
+                data-value="2"
+              >
+                2
+              </button>
+
+              <button
+                type="button"
+                class="calculator-button"
+                data-value="3"
+              >
+                3
+              </button>
+
+              <button
+                type="button"
+                class="calculator-button calculator-operation"
+                data-value="+"
+              >
+                +
+              </button>
+
+
+              <button
+                type="button"
+                class="calculator-button calculator-zero"
+                data-value="0"
+              >
+                0
+              </button>
+
+              <button
+                type="button"
+                class="calculator-button"
+                data-value="."
+              >
+                .
+              </button>
+
+              <button
+                type="button"
+                class="calculator-button calculator-equals"
+                data-action="calculate"
+              >
+                =
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- MESSAGE -->
+
+          <div
+            id="calculatorMessage"
+            class="tool-message"
+            aria-live="polite"
+          ></div>
+
+        </div>
+
+
+        <!-- AD -->
+
+        <div class="ad-section">
+
+          <div
+            class="ad-slot ad-300x250"
+            data-ad-slot="banner-300x250"
+          ></div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- INFORMATION -->
+
+    <section class="tool-info-section">
+
+      <div class="container">
+
+        <div class="tool-info-card">
+
+          <h2>
+            About Calculator
+          </h2>
+
+          <p>
+            ToolNova's online calculator can handle
+            common arithmetic operations such as
+            addition, subtraction, multiplication,
+            division and percentages.
+          </p>
+
+          <h3>
+            Supported operations
+          </h3>
+
+          <ul>
+
+            <li>
+              Addition
+            </li>
+
+            <li>
+              Subtraction
+            </li>
+
+            <li>
+              Multiplication
+            </li>
+
+            <li>
+              Division
+            </li>
+
+            <li>
+              Percentage
+            </li>
+
+            <li>
+              Decimal calculations
+            </li>
+
+          </ul>
+
+          <p>
+            You can also use your keyboard to enter
+            numbers and basic operators.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================================
+       FOOTER
+  ========================================== -->
+
+  <footer class="site-footer">
+
+    <div class="container footer-main">
+
+      <div>
+
+        <a
+          href="../../index.html"
+          class="logo"
+        >
+          <span class="logo-mark">T</span>
+          <span>ToolNova</span>
+        </a>
+
+        <p>
+          Simple, fast and useful online tools.
+        </p>
+
+      </div>
+
+
+      <div class="footer-links">
+
+        <div class="footer-column">
+
+          <h3>
+            ToolNova
+          </h3>
+
+          <a href="../../index.html">
+            Tools
+          </a>
+
+          <a href="../../about.html">
+            About
+          </a>
+
+          <a href="../../contact.html">
+            Contact
+          </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h3>
+            Legal
+          </h3>
+
+          <a href="../../privacy.html">
+            Privacy
+          </a>
+
+          <a href="../../terms.html">
+            Terms
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="container footer-bottom">
+
+      <p>
+        © 2026 ToolNova. All rights reserved.
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================================
+       SCRIPTS
+  ========================================== -->
+
+  <script src="../../ads/ad-config.js"></script>
+
+  <script src="../../script.js"></script>
+
+  <script src="tool.js"></script>
+
+</body>
+</html>
