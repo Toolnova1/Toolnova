@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>PDF Merger - ToolNova</title>
+
+  <meta
+    name="description"
+    content="Merge multiple PDF files into one document directly in your browser with ToolNova."
+  >
+
+  <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+
+  <!-- =========================================
+       HEADER
+  ========================================== -->
+
+  <header class="site-header">
+
+    <div class="container header-inner">
+
+      <a href="../../index.html" class="logo">
+        <span class="logo-mark">T</span>
+        <span>ToolNova</span>
+      </a>
+
+      <nav class="main-nav">
+
+        <a href="../../index.html">
+          Tools
+        </a>
+
+        <a href="../../about.html">
+          About
+        </a>
+
+        <a href="../../privacy.html">
+          Privacy
+        </a>
+
+        <a href="../../contact.html">
+          Contact
+        </a>
+
+      </nav>
+
+      <a
+        href="../../index.html"
+        class="header-button"
+      >
+        Explore Tools
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================================
+       MAIN
+  ========================================== -->
+
+  <main class="tool-page">
+
+    <!-- TOOL HERO -->
+
+    <section class="tool-hero">
+
+      <div class="container">
+
+        <a
+          href="../../index.html"
+          class="back-link"
+        >
+          ← Back to all tools
+        </a>
+
+        <div class="tool-page-icon red">
+          PDF
+        </div>
+
+        <div class="tool-category">
+          PDF
+        </div>
+
+        <h1>
+          PDF Merger
+        </h1>
+
+        <p>
+          Combine multiple PDF files into one
+          document directly in your browser.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- TOOL WORKSPACE -->
+
+    <section class="tool-workspace-section">
+
+      <div class="container">
+
+        <div class="tool-workspace">
+
+          <div class="tool-workspace-header">
+
+            <div>
+
+              <h2>
+                Merge PDF Files
+              </h2>
+
+              <p>
+                Select two or more PDF files and
+                combine them into one document.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <!-- FILE UPLOAD -->
+
+          <div class="file-drop">
+
+            <label
+              for="pdfInput"
+              class="file-drop-label"
+            >
+
+              <span class="file-drop-icon">
+                ↑
+              </span>
+
+              <strong>
+                Choose PDF files
+              </strong>
+
+              <span>
+                You can select multiple PDF files
+              </span>
+
+            </label>
+
+            <input
+              type="file"
+              id="pdfInput"
+              accept="application/pdf,.pdf"
+              multiple
+              hidden
+            >
+
+          </div>
+
+
+          <!-- FILE LIST -->
+
+          <div
+            id="pdfFileList"
+            class="pdf-file-list"
+          ></div>
+
+
+          <!-- ACTIONS -->
+
+          <div class="tool-actions">
+
+            <button
+              type="button"
+              id="mergePdfButton"
+              class="header-button"
+              disabled
+            >
+              Merge PDFs
+            </button>
+
+            <button
+              type="button"
+              id="clearPdfButton"
+              class="secondary-button"
+            >
+              Clear
+            </button>
+
+          </div>
+
+
+          <!-- MESSAGE -->
+
+          <div
+            id="pdfMessage"
+            class="tool-message"
+            aria-live="polite"
+          ></div>
+
+
+          <!-- DOWNLOAD -->
+
+          <div
+            id="pdfDownloadArea"
+            class="tool-actions"
+          >
+
+            <a
+              id="downloadMergedPdf"
+              class="header-button"
+              href="#"
+              download="toolnova-merged.pdf"
+            >
+              Download Merged PDF
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <!-- AD -->
+
+        <div class="ad-section">
+
+          <div
+            class="ad-slot ad-300x250"
+            data-ad-slot="banner-300x250"
+          ></div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- INFORMATION -->
+
+    <section class="tool-info-section">
+
+      <div class="container">
+
+        <div class="tool-info-card">
+
+          <h2>
+            About PDF Merger
+          </h2>
+
+          <p>
+            PDF Merger lets you combine multiple
+            PDF documents into a single PDF file.
+          </p>
+
+          <h3>
+            How to use it
+          </h3>
+
+          <ol>
+
+            <li>
+              Select multiple PDF files.
+            </li>
+
+            <li>
+              Arrange the files in the desired order.
+            </li>
+
+            <li>
+              Click Merge PDFs.
+            </li>
+
+            <li>
+              Download your merged PDF.
+            </li>
+
+          </ol>
+
+          <p>
+            PDF processing is performed directly
+            in your browser.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================================
+       FOOTER
+  ========================================== -->
+
+  <footer class="site-footer">
+
+    <div class="container footer-main">
+
+      <div>
+
+        <a
+          href="../../index.html"
+          class="logo"
+        >
+          <span class="logo-mark">T</span>
+          <span>ToolNova</span>
+        </a>
+
+        <p>
+          Simple, fast and useful online tools.
+        </p>
+
+      </div>
+
+
+      <div class="footer-links">
+
+        <div class="footer-column">
+
+          <h3>
+            ToolNova
+          </h3>
+
+          <a href="../../index.html">
+            Tools
+          </a>
+
+          <a href="../../about.html">
+            About
+          </a>
+
+          <a href="../../contact.html">
+            Contact
+          </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h3>
+            Legal
+          </h3>
+
+          <a href="../../privacy.html">
+            Privacy
+          </a>
+
+          <a href="../../terms.html">
+            Terms
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="container footer-bottom">
+
+      <p>
+        © 2026 ToolNova. All rights reserved.
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================================
+       SCRIPTS
+  ========================================== -->
+
+  <!-- PDF LIBRARY -->
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"
+  ></script>
+
+  <script src="../../ads/ad-config.js"></script>
+
+  <script src="../../script.js"></script>
+
+  <script src="tool.js"></script>
+
+</body>
+</html>
