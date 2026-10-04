@@ -2,235 +2,520 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <meta
     name="description"
-    content="ToolNova — free, fast and simple online tools."
+    content="ToolNova — free, fast and private online tools for text, security, calculations, images and PDF tasks."
   >
 
-  <meta name="theme-color" content="#080b14">
+  <meta
+    name="keywords"
+    content="free online tools, word counter, character counter, password generator, QR generator, JSON formatter, calculator, PDF tools, image compressor"
+  >
+
+  <meta
+    name="theme-color"
+    content="#080b14"
+  >
+
+  <meta
+    property="og:title"
+    content="ToolNova — Free Online Tools"
+  >
+
+  <meta
+    property="og:description"
+    content="Fast, simple and useful online tools for everyday tasks."
+  >
+
+  <meta
+    property="og:type"
+    content="website"
+  >
 
   <title>ToolNova — Free Online Tools</title>
 
   <link rel="stylesheet" href="style.css">
+
+  <link
+    rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%237c5cff'/%3E%3Ctext x='50' y='67' font-size='55' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'%3ET%3C/text%3E%3C/svg%3E"
+  >
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <a href="#" class="logo">
-      Tool<span>Nova</span>
-    </a>
+  <!-- =========================
+       HEADER
+  ========================== -->
 
-    <nav class="nav">
-      <a href="#home">Home</a>
-      <a href="#tools">Tools</a>
-      <a href="#about">About</a>
-    </nav>
+  <header class="site-header">
 
-    <a href="#tools" class="nav-button">
-      Explore Tools
-    </a>
+    <div class="container header-inner">
+
+      <a
+        href="index.html"
+        class="logo"
+        aria-label="ToolNova Home"
+      >
+        Tool<span>Nova</span>
+      </a>
+
+      <nav
+        class="main-nav"
+        aria-label="Main navigation"
+      >
+        <a href="#home">Home</a>
+        <a href="#tools">Tools</a>
+        <a href="#why-toolnova">Why ToolNova</a>
+        <a href="about.html">About</a>
+      </nav>
+
+      <a
+        href="#tools"
+        class="header-button"
+      >
+        Explore Tools
+      </a>
+
+    </div>
+
   </header>
 
 
-  <!-- HERO -->
   <main>
 
-    <section class="hero" id="home">
+    <!-- =========================
+         HERO
+    ========================== -->
 
-      <div class="hero-badge">
-        ✦ Free Online Tools
-      </div>
+    <section
+      class="hero"
+      id="home"
+    >
 
-      <h1>
-        Powerful Tools.
-        <span>Simple to Use.</span>
-      </h1>
+      <div class="container hero-inner">
 
-      <p>
-        ToolNova gives you fast, useful and free online tools
-        for everyday tasks, work and productivity.
-      </p>
-
-      <div class="hero-actions">
-        <a href="#tools" class="primary-button">
-          Explore Tools
-        </a>
-
-        <a href="#about" class="secondary-button">
-          Learn More
-        </a>
-      </div>
-
-    </section>
-
-
-    <!-- TOOLS -->
-    <section class="tools-section" id="tools">
-
-      <div class="section-heading">
-        <div>
-          <p class="section-label">TOOLBOX</p>
-
-          <h2>
-            Everything you need.
-          </h2>
+        <div class="hero-badge">
+          <span>✦</span>
+          Free Online Tools
         </div>
 
-        <p class="section-description">
-          Useful tools designed to be fast, simple and distraction-free.
+        <h1>
+          Powerful Tools.
+          <span>Simple to Use.</span>
+        </h1>
+
+        <p class="hero-description">
+          Fast, useful and free online tools for everyday tasks,
+          productivity, development, security and file management.
         </p>
-      </div>
+
+        <div class="hero-actions">
+
+          <a
+            href="#tools"
+            class="button button-primary"
+          >
+            Explore Tools
+            <span>→</span>
+          </a>
+
+          <a
+            href="#why-toolnova"
+            class="button button-secondary"
+          >
+            Why ToolNova?
+          </a>
+
+        </div>
 
 
-      <div class="tools-grid">
+        <!-- HERO SEARCH -->
 
-        <!-- WORD COUNTER -->
-        <button class="tool-card" data-tool="word-counter">
+        <div class="hero-search">
 
-          <div class="tool-icon purple">
-            Aa
-          </div>
+          <span class="search-icon">⌕</span>
 
-          <div class="tool-content">
-            <h3>Word Counter</h3>
+          <input
+            type="search"
+            id="heroToolSearch"
+            placeholder="Search for a tool..."
+            autocomplete="off"
+            aria-label="Search tools"
+          >
 
-            <p>
-              Count words, characters and lines instantly.
-            </p>
-          </div>
+          <span class="search-shortcut">
+            Search
+          </span>
 
-          <span class="tool-arrow">→</span>
-
-        </button>
-
-
-        <!-- CASE CONVERTER -->
-        <button class="tool-card" data-tool="case-converter">
-
-          <div class="tool-icon blue">
-            Aa
-          </div>
-
-          <div class="tool-content">
-            <h3>Case Converter</h3>
-
-            <p>
-              Convert text to uppercase, lowercase and more.
-            </p>
-          </div>
-
-          <span class="tool-arrow">→</span>
-
-        </button>
-
-
-        <!-- PASSWORD -->
-        <button class="tool-card" data-tool="password-generator">
-
-          <div class="tool-icon green">
-            🔐
-          </div>
-
-          <div class="tool-content">
-            <h3>Password Generator</h3>
-
-            <p>
-              Generate strong and secure passwords.
-            </p>
-          </div>
-
-          <span class="tool-arrow">→</span>
-
-        </button>
-
-
-        <!-- CALCULATOR -->
-        <button class="tool-card" data-tool="calculator">
-
-          <div class="tool-icon orange">
-            123
-          </div>
-
-          <div class="tool-content">
-            <h3>Calculator</h3>
-
-            <p>
-              Perform quick calculations directly in your browser.
-            </p>
-          </div>
-
-          <span class="tool-arrow">→</span>
-
-        </button>
-
-
-        <!-- JSON FORMATTER -->
-        <button class="tool-card" data-tool="json-formatter">
-
-          <div class="tool-icon pink">
-            { }
-          </div>
-
-          <div class="tool-content">
-            <h3>JSON Formatter</h3>
-
-            <p>
-              Format and validate JSON data easily.
-            </p>
-          </div>
-
-          <span class="tool-arrow">→</span>
-
-        </button>
-
-
-        <!-- UNIT CONVERTER -->
-        <button class="tool-card" data-tool="unit-converter">
-
-          <div class="tool-icon cyan">
-            ↔
-          </div>
-
-          <div class="tool-content">
-            <h3>Unit Converter</h3>
-
-            <p>
-              Convert common units quickly and accurately.
-            </p>
-          </div>
-
-          <span class="tool-arrow">→</span>
-
-        </button>
+        </div>
 
       </div>
 
     </section>
 
 
-    <!-- ABOUT -->
-    <section class="about-section" id="about">
+    <!-- =========================
+         AD SLOT
+         Native Banner
+    ========================== -->
 
-      <div class="about-card">
+    <section
+      class="ad-section ad-section-top"
+      aria-label="Advertisement"
+    >
 
-        <p class="section-label">
-          ABOUT TOOLNOVA
-        </p>
+      <div class="container">
 
-        <h2>
-          One place for the tools
-          you actually need.
-        </h2>
+        <div
+          class="ad-slot ad-native"
+          data-ad-slot="native-top"
+        >
 
-        <p>
-          ToolNova is being built as a simple collection of
-          useful browser-based utilities. No unnecessary
-          complexity. No confusing interfaces.
-        </p>
+          <!-- Adsterra Native Banner will be loaded here -->
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         TOOLS
+    ========================== -->
+
+    <section
+      class="tools-section"
+      id="tools"
+    >
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <div>
+
+            <p class="section-label">
+              TOOLBOX
+            </p>
+
+            <h2>
+              Everything you need.
+            </h2>
+
+          </div>
+
+          <p class="section-description">
+            Simple browser-based utilities designed to save
+            time and get the job done without unnecessary complexity.
+          </p>
+
+        </div>
+
+
+        <!-- CATEGORY FILTER -->
+
+        <div
+          class="category-bar"
+          id="categoryBar"
+          aria-label="Tool categories"
+        >
+
+          <button
+            class="category-button active"
+            data-category="all"
+          >
+            All Tools
+          </button>
+
+        </div>
+
+
+        <!-- TOOL SEARCH -->
+
+        <div class="tools-search-wrapper">
+
+          <span class="search-icon">
+            ⌕
+          </span>
+
+          <input
+            type="search"
+            id="toolsSearch"
+            placeholder="Search tools..."
+            autocomplete="off"
+            aria-label="Search all tools"
+          >
+
+          <button
+            type="button"
+            id="clearToolsSearch"
+            class="clear-search"
+            aria-label="Clear search"
+          >
+            ×
+          </button>
+
+        </div>
+
+
+        <!-- TOOL COUNT -->
+
+        <div class="tools-meta">
+
+          <span id="toolsCount">
+            Loading tools...
+          </span>
+
+        </div>
+
+
+        <!-- TOOL GRID -->
+
+        <div
+          class="tools-grid"
+          id="toolsGrid"
+        >
+
+          <!--
+            Tool cards are generated automatically
+            from data/tools.js.
+          -->
+
+        </div>
+
+
+        <!-- NO RESULTS -->
+
+        <div
+          class="no-results"
+          id="noResults"
+          hidden
+        >
+
+          <div class="no-results-icon">
+            🔎
+          </div>
+
+          <h3>
+            No tools found
+          </h3>
+
+          <p>
+            Try another search term or choose a different category.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         AD SLOT
+         300x250
+    ========================== -->
+
+    <section
+      class="ad-section"
+      aria-label="Advertisement"
+    >
+
+      <div class="container">
+
+        <div
+          class="ad-slot ad-300x250"
+          data-ad-slot="banner-300x250"
+        >
+
+          <!-- Adsterra 300x250 will be loaded here -->
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         WHY TOOLNOVA
+    ========================== -->
+
+    <section
+      class="why-section"
+      id="why-toolnova"
+    >
+
+      <div class="container">
+
+        <div class="section-heading centered">
+
+          <p class="section-label">
+            WHY TOOLNOVA
+          </p>
+
+          <h2>
+            Useful tools without the unnecessary stuff.
+          </h2>
+
+          <p class="section-description centered-description">
+            ToolNova is built around speed, simplicity and
+            a clean experience.
+          </p>
+
+        </div>
+
+
+        <div class="benefits-grid">
+
+          <article class="benefit-card">
+
+            <div class="benefit-icon">
+              ⚡
+            </div>
+
+            <h3>
+              Fast
+            </h3>
+
+            <p>
+              Lightweight tools designed to work quickly
+              in your browser.
+            </p>
+
+          </article>
+
+
+          <article class="benefit-card">
+
+            <div class="benefit-icon">
+              🔒
+            </div>
+
+            <h3>
+              Privacy First
+            </h3>
+
+            <p>
+              Wherever possible, processing happens directly
+              in your browser.
+            </p>
+
+          </article>
+
+
+          <article class="benefit-card">
+
+            <div class="benefit-icon">
+              🆓
+            </div>
+
+            <h3>
+              Free to Use
+            </h3>
+
+            <p>
+              Useful everyday utilities without unnecessary
+              subscriptions.
+            </p>
+
+          </article>
+
+
+          <article class="benefit-card">
+
+            <div class="benefit-icon">
+              📱
+            </div>
+
+            <h3>
+              Mobile Friendly
+            </h3>
+
+            <p>
+              Designed to work smoothly on phones,
+              tablets and desktop devices.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         CTA
+    ========================== -->
+
+    <section class="cta-section">
+
+      <div class="container">
+
+        <div class="cta-card">
+
+          <div>
+
+            <p class="section-label">
+              TOOLNOVA
+            </p>
+
+            <h2>
+              Find the tool you need.
+            </h2>
+
+            <p>
+              Browse our growing collection of simple
+              online utilities.
+            </p>
+
+          </div>
+
+          <a
+            href="#tools"
+            class="button button-primary"
+          >
+            Explore Tools
+            <span>→</span>
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         AD SLOT
+         468x60
+    ========================== -->
+
+    <section
+      class="ad-section ad-section-bottom"
+      aria-label="Advertisement"
+    >
+
+      <div class="container">
+
+        <div
+          class="ad-slot ad-468x60"
+          data-ad-slot="banner-468x60"
+        >
+
+          <!-- Adsterra 468x60 will be loaded here -->
+
+        </div>
 
       </div>
 
@@ -239,38 +524,107 @@
   </main>
 
 
-  <!-- FOOTER -->
-  <footer>
+  <!-- =========================
+       FOOTER
+  ========================== -->
 
-    <div class="footer-logo">
-      Tool<span>Nova</span>
+  <footer class="site-footer">
+
+    <div class="container footer-main">
+
+      <div class="footer-brand">
+
+        <a
+          href="index.html"
+          class="footer-logo"
+        >
+          Tool<span>Nova</span>
+        </a>
+
+        <p>
+          Free, fast and useful online tools for everyone.
+        </p>
+
+      </div>
+
+
+      <div class="footer-links">
+
+        <div class="footer-column">
+
+          <h3>
+            Tools
+          </h3>
+
+          <a href="#tools">
+            All Tools
+          </a>
+
+          <a href="#tools">
+            Text Tools
+          </a>
+
+          <a href="#tools">
+            Developer Tools
+          </a>
+
+          <a href="#tools">
+            PDF Tools
+          </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h3>
+            Company
+          </h3>
+
+          <a href="about.html">
+            About
+          </a>
+
+          <a href="contact.html">
+            Contact
+          </a>
+
+          <a href="privacy.html">
+            Privacy Policy
+          </a>
+
+          <a href="terms.html">
+            Terms
+          </a>
+
+        </div>
+
+      </div>
+
     </div>
 
-    <p>
-      © 2026 ToolNova. All rights reserved.
-    </p>
+
+    <div class="container footer-bottom">
+
+      <p>
+        © 2026 ToolNova. All rights reserved.
+      </p>
+
+      <p>
+        Built for simple, everyday utility.
+      </p>
+
+    </div>
 
   </footer>
 
 
-  <!-- TOOL MODAL -->
-  <div class="modal" id="toolModal">
+  <!-- =========================
+       CORE SCRIPT
+  ========================== -->
 
-    <div class="modal-overlay"></div>
-
-    <div class="modal-box">
-
-      <button class="modal-close" id="modalClose">
-        ×
-      </button>
-
-      <div id="toolContent"></div>
-
-    </div>
-
-  </div>
-
-
+  <script src="data/tools.js"></script>
+  <script src="ads/ad-config.js"></script>
   <script src="script.js"></script>
 
 </body>
